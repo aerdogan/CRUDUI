@@ -1,0 +1,15 @@
+.router-container {
+  display: flex;
+  justify-content: center; /* yatay ortala */
+  padding: 0 20px;         /* sağ-sol padding */
+  min-height: 99vh;       /* ekran yüksekliği kadar */
+  box-sizing: border-box;  /* padding dahil genişlik hesapla */
+  background-color: whitesmoke;
+}
+
+/* Mobilde padding azalt */
+@media (max-width: 600px) {
+  .router-container {
+    padding: 0 10px;
+  }
+}

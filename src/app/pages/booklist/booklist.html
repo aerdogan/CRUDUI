@@ -1,52 +1,64 @@
 <p-toast />
 
-<div class="card">
-    <p-table 
-        [value]="books" 
-        [resizableColumns]="true" 
-        [tableStyle]="{ 'min-width': '60rem' }"
-        dataKey="id"
-        [rowHover]="true"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]"
-        [paginator]="true"
-        currentPageReportTemplate="Toplam {totalRecords} kayıttan {first} ile {last} arası kayıtlar listeleniyor."
+<p-card header="Kitaplar">
+  <p class="m-0">
+    <p-table
+      [value]="books"
+      [resizableColumns]="true"
+      [tableStyle]="{ 'min-width': '60rem' }"
+      dataKey="id"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Toplam {totalRecords} kayıttan {first} ile {last} arası kayıtlar listeleniyor."
     >
-        <ng-template #caption>
-            <div class="flex items-center justify-between">                
-                <h1 class="fontuygula">Kitaplar</h1>
-            </div>
-        </ng-template>
+      <ng-template #header>
+        <tr>
+          <th>Adı</th>
+          <th>Yayınevi</th>
+          <th>Kirada mı?</th>
+          <th>Toplam Kiralama</th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-book>
+        <tr>
+          <td>{{ book.ad }}</td>
+          <td>{{ book.yayinevi }}</td>
+          @if (book.kirada) {
+          <td>Evet</td>
+          } @else {
+          <td>Hayır</td>
+          }
+          <td>{{ book.toplamkira }}</td>
+          
+          
 
-        <ng-template #header>
-            <tr class="fontuygula">
-                <th>Adı</th>
-                <th>Yayınevi</th>
-                <th>Kirada mı?</th>
-                <th>Toplam Kiralama</th>
-                <th></th>
-            </tr>
-        </ng-template>
-        <ng-template #body let-book>
-            <tr>
-                <td class="fontuygula">{{ book.ad }}</td>
-                <td>{{ book.yayinevi }}</td>
-                @if (book.kirada) {
-                    <td>Evet</td>
-                } @else {
-                    <td>Hayır</td>
-                }
-                <td>{{ book.toplamkira }}</td>                
-                <td>
-                    <p-button class="bosluk" routerLink="/book/edit/{{ book.id }}" icon="pi pi-pen-to-square" severity="warn" rounded />
-                    <p-button class="bosluk" (onClick)="deleteBook(book.id)" icon="pi pi-trash"  severity="danger" rounded />
-                </td>    
-            </tr>
-        </ng-template>
+          
+          <td>
+            <p-button
+              class="bosluk"
+              routerLink="/book/edit/{{ book.id }}"
+              icon="pi pi-pen-to-square"
+              severity="warn"
+              [rounded]="true" [outlined]="true"
+            />
+            <p-button
+              class="bosluk"
+              (onClick)="deleteBook(book.id)"
+              icon="pi pi-trash"
+              severity="danger"
+              [rounded]="true" [outlined]="true"
+            />
+          </td>
+        </tr>
+      </ng-template>
     </p-table>
+  </p>
+</p-card>
 
-
-<p-button icon="pi pi-file-plus" routerLink="/book/add" label="Kitap Ekle" />
-
+<div class="card flex flex-col md:flex-row gap-4">
+  <p-button icon="pi pi-file-plus" routerLink="/book/add" label="Kitap Ekle" />
 </div>

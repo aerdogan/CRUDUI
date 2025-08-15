@@ -1,48 +1,47 @@
 <p-toast />
 
-<h1>{{ isEditing ? 'Kitap Düzenle' : 'Kitap Ekle' }}</h1>
+<div class="card flex justify-center">
+  <h1>{{ isEditing ? 'Kitap Düzenle' : 'Kitap Ekle' }}</h1>
 
-<div class="p-fluid">
-  <form [formGroup]="bookEditForm" (ngSubmit)="saveBook()">
-    <!-- Kitap Adı -->
-    <div class="p-field">
-      <label for="ad">Kitap Adı</label>
-      <input
-        id="ad"
-        pInputText
-        type="text"
-        formControlName="ad"
-        placeholder="Kitap adını giriniz"
-      />
+  <div class="flex flex-col gap-4">
+    <form [formGroup]="bookEditForm" (ngSubmit)="saveBook()">
+      <!-- Kitap Adı -->
+      <p-inputgroup>
+        <p-inputgroup-addon>
+          <i class="pi pi-book"></i>
+        </p-inputgroup-addon>
+
+        <p-floatlabel variant="on">
+          <input pInputText id="on_label" formControlName="ad" />
+          <label for="on_label">Kitap Adı</label>
+        </p-floatlabel>
+      </p-inputgroup>
 
       @if (bookEditForm.get('ad').invalid && bookEditForm.get('ad').touched) {
-      <small class="p-error">Kitap adı zorunludur.</small>
+      <p-message severity="error" variant="simple" size="small">Kitap adı zorunludur.</p-message>
       }
 
-    </div>
+      <!-- Yayınevi -->
+      <p-inputgroup>
+        <p-inputgroup-addon>
+          <i class="pi pi-book"></i>
+        </p-inputgroup-addon>
 
-    <!-- Yayınevi -->
-    <div class="p-field">
-      <label for="yayinevi">Yayınevi</label>
-      <input
-        id="yayinevi"
-        pInputText
-        type="text"
-        formControlName="yayinevi"
-        placeholder="Yayınevi adını giriniz"
-      />
+        <p-floatlabel variant="on">
+          <input pInputText id="on_label" formControlName="yayinevi" />
+          <label for="on_label">Yayınevi</label>
+        </p-floatlabel>
+      </p-inputgroup>
 
       @if (bookEditForm.get('yayinevi').invalid && bookEditForm.get('yayinevi').touched) {
-      <small class="p-error">Yayınevi zorunludur.</small>
+      <p-message severity="error" variant="simple" size="small">Yayınevi zorunludur.</p-message>
       }
 
-    </div>
-
-    <div class="p-field" style="padding-top: 20px">
-      <button pButton type="submit" icon="pi pi-save" [disabled]="bookEditForm.invalid">
-        {{ isEditing ? 'Kitap Düzenle' : 'Kitap Ekle' }}
-      </button>
-    </div>
-    
-  </form>
+      <div class="p-field" style="padding-top: 20px">
+        <button pButton type="submit" icon="pi pi-save" [disabled]="bookEditForm.invalid">
+          {{ isEditing ? 'Kitap Düzenle' : 'Kitap Ekle' }}
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

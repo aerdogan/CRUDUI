@@ -19,6 +19,8 @@ import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { Book } from '../../models/book';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { Message } from 'primeng/message';
 
 @Component({
   selector: 'app-bookedit',
@@ -37,6 +39,8 @@ import { Book } from '../../models/book';
     Toast,
     ToastModule,
     ButtonModule,
+    FloatLabelModule,
+    Message
   ],
   providers: [MessageService],
   templateUrl: './bookedit.html',

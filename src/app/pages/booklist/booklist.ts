@@ -9,6 +9,7 @@ import { BookService } from '../../services/book-service';
 import { Router, RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Toast, ToastModule } from 'primeng/toast';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-booklist',
@@ -22,6 +23,7 @@ import { Toast, ToastModule } from 'primeng/toast';
     ButtonModule,
     CommonModule,
     RouterModule,
+    CardModule
   ],
   templateUrl: './booklist.html',
   styleUrl: './booklist.css',

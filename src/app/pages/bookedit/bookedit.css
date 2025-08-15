@@ -1,0 +1,60 @@
+/* bookedit.css */
+
+/* Form container */
+.p-fluid {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Label */
+.p-field label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Input & Checkbox styling */
+.p-inputtext,
+.p-checkbox {
+  width: 100%;
+}
+
+/* Error messages */
+.p-error {
+  font-size: 0.85rem;
+  color: #d9534f;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Submit button */
+button[pButton] {
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+/* Hover & focus for inputs */
+.p-inputtext:focus {
+  border-color: #42a5f5;
+  box-shadow: 0 0 4px rgba(66, 165, 245, 0.5);
+}
+
+/* Checkbox label fix */
+.p-field-checkbox .p-checkbox-label {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .p-fluid {
+    padding: 1.5rem;
+  }
+}

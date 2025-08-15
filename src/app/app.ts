@@ -1,12 +1,19 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Layout } from './components/layout/layout';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Layout],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('CRUDUI');
+
+  toggleDarkMode() {
+    const element = document.querySelector('html');
+    element.classList.toggle('my-app-dark');
+  }
+
 }

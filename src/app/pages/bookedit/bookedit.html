@@ -1,0 +1,48 @@
+<p-toast />
+
+<h1>{{ isEditing ? 'Kitap Düzenle' : 'Kitap Ekle' }}</h1>
+
+<div class="p-fluid">
+  <form [formGroup]="bookEditForm" (ngSubmit)="saveBook()">
+    <!-- Kitap Adı -->
+    <div class="p-field">
+      <label for="ad">Kitap Adı</label>
+      <input
+        id="ad"
+        pInputText
+        type="text"
+        formControlName="ad"
+        placeholder="Kitap adını giriniz"
+      />
+
+      @if (bookEditForm.get('ad').invalid && bookEditForm.get('ad').touched) {
+      <small class="p-error">Kitap adı zorunludur.</small>
+      }
+
+    </div>
+
+    <!-- Yayınevi -->
+    <div class="p-field">
+      <label for="yayinevi">Yayınevi</label>
+      <input
+        id="yayinevi"
+        pInputText
+        type="text"
+        formControlName="yayinevi"
+        placeholder="Yayınevi adını giriniz"
+      />
+
+      @if (bookEditForm.get('yayinevi').invalid && bookEditForm.get('yayinevi').touched) {
+      <small class="p-error">Yayınevi zorunludur.</small>
+      }
+
+    </div>
+
+    <div class="p-field" style="padding-top: 20px">
+      <button pButton type="submit" icon="pi pi-save" [disabled]="bookEditForm.invalid">
+        {{ isEditing ? 'Kitap Düzenle' : 'Kitap Ekle' }}
+      </button>
+    </div>
+    
+  </form>
+</div>
